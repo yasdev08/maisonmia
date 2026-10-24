@@ -23,10 +23,13 @@ export function getLogo(): LogoAsset | null {
   }
 }
 
+const OG_MAX_BYTES = 200 * 1024;
+
+/** Small logo for the Open Graph image. Satori/resvg choke on multi-MB data URIs, so oversized files are skipped. */
 export function getLogoDataUri(): string | null {
   try {
-    const file = path.join(process.cwd(), "public", siteConfig.logo.src);
-    if (!fs.existsSync(file)) return null;
+    const file = path.join(process.cwd(), "public", siteConfig.logo.ogSrc);
+    if (!fs.existsSync(file) || fs.statSync(file).size > OG_MAX_BYTES) return null;
     return `data:image/png;base64,${fs.readFileSync(file).toString("base64")}`;
   } catch {
     return null;

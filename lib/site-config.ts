@@ -17,6 +17,8 @@ export const siteConfig = {
   logo: {
     src: "/images/maison-mia-logo.png",
     alt: "Logo Maison Mia, salon de coiffure et esthétique",
+    /** Small (<200 KB) version used only for the social preview image. Never point this at a full-size file. */
+    ogSrc: "/images/maison-mia-logo-og.png",
   },
 
   /** Numbers in national Algerian format (leading 0). Converted automatically. */
