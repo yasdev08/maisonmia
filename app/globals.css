@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ivory: var(--mm-ivory);
+  --color-champagne: var(--mm-champagne);
+  --color-bronze: var(--mm-bronze);
+  --color-bronze-deep: var(--mm-bronze-deep);
+  --color-espresso: var(--mm-espresso);
+  --color-line: var(--mm-line);
+  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --font-sans: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --mm-ivory: #fbf6ee;
+  --mm-champagne: #f0e4d0;
+  --mm-bronze: #a45f2e;
+  --mm-bronze-deep: #7d4520;
+  --mm-espresso: #2a1a12;
+  --mm-line: #d8c2a3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(60rem 30rem at 50% -10%, color-mix(in srgb, var(--mm-champagne) 90%, white) 0%, transparent 70%),
+    var(--mm-champagne);
+  color: var(--mm-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mm-bronze-deep);
+  outline-offset: 3px;
+  border-radius: 0.75rem;
+}
+
+/* One orchestrated moment: the card settles in on load. */
+@keyframes mm-settle {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.mm-settle { animation: mm-settle 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mm-settle { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
