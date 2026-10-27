@@ -1,4 +1,5 @@
 import { siteConfig } from "../lib/site-config.ts";
+import { buildVCard } from "../lib/vcard.ts";
 import { buildSocials, buildTelUrl, buildWhatsAppUrl, toInternationalDZ, buildMapsEmbedUrl } from "../lib/links.ts";
 
 let failed = 0;
@@ -33,6 +34,13 @@ eq("coords match maps url", location.mapsUrl.includes(`!3d${location.latitude}!4
 eq("embed url", buildMapsEmbedUrl(location.latitude, location.longitude), "https://www.google.com/maps?q=35.6746074,-0.6478291&z=17&hl=fr&output=embed");
 eq("opening hours not invented", siteConfig.openingHours.length, 0);
 eq("services not invented", siteConfig.services.items.length, 0);
+
+const vc = buildVCard(siteConfig).replace(/\r\n /g, "");
+eq("vcard wrapper", vc.startsWith("BEGIN:VCARD\r\nVERSION:3.0") && vc.trimEnd().endsWith("END:VCARD"), true);
+eq("vcard whatsapp tel", vc.includes("TEL;TYPE=CELL,VOICE:+213797715453"), true);
+eq("vcard call tel", vc.includes("TEL;TYPE=WORK,VOICE:+213552896312"), true);
+eq("vcard instagram", vc.includes("https://www.instagram.com/maison.mia31/"), true);
+eq("vcard no invented street", vc.includes("ADR;TYPE=WORK:;;;Oran;;;Algérie"), true);
 
 console.log(failed ? `\n${failed} check(s) failed` : "\nAll checks passed");
 process.exit(failed ? 1 : 0);

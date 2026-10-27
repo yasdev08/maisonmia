@@ -1,4 +1,4 @@
-import { MessageCircle, Phone, MapPin } from "lucide-react";
+import { MessageCircle, Phone, MapPin, UserPlus } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { buildSocials, buildTelUrl, buildWhatsAppUrl, formatLocal } from "@/lib/links";
 import { BrandHeader } from "@/components/BrandHeader";
@@ -46,6 +46,12 @@ export default function Home() {
               icon={<MapPin aria-hidden="true" />}
             />
           ) : null}
+          <LinkButton
+            href="/contact.vcf"
+            label="Enregistrer le contact"
+            hint="Ajouter au téléphone"
+            icon={<UserPlus aria-hidden="true" />}
+          />
           {socials.map((s) => (
             <LinkButton
               key={s.id}
