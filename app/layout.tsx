@@ -30,6 +30,8 @@ export const metadata: Metadata = {
     description,
     url: "/",
   },
+  appleWebApp: { capable: true, title: siteConfig.name, statusBarStyle: "default" },
+  formatDetection: { telephone: false },
   twitter: { card: "summary_large_image", title, description },
 };
 

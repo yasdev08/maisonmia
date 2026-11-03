@@ -8,6 +8,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { LocationCard } from "@/components/LocationCard";
 import { BookingSection } from "@/components/BookingSection";
 import { Footer } from "@/components/Footer";
+import { InstallAppButton } from "@/components/InstallAppButton";
 
 export default function Home() {
   const { contact, location } = siteConfig;
@@ -52,6 +53,7 @@ export default function Home() {
             hint="Ajouter au téléphone"
             icon={<UserPlus aria-hidden="true" />}
           />
+          <InstallAppButton />
           {socials.map((s) => (
             <LinkButton
               key={s.id}
