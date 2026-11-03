@@ -7,11 +7,8 @@ import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
-
-/** Set NEXT_PUBLIC_SITE_URL (e.g. https://maisonmia.dz) once the domain is known. */
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+import { siteUrl } from "@/lib/site-url";
+import { INSTALL_BOOT_SCRIPT } from "@/lib/install-boot";
 
 const title = `${siteConfig.name} | Salon de Coiffure et Esthétique`;
 const description = `${siteConfig.name}, salon de coiffure et esthétique à Oran. ${siteConfig.tagline} Prenez rendez-vous par WhatsApp ou par téléphone.`;
@@ -54,6 +51,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="fr" style={vars}>
+      <head>
+        {/* Catches the browser's install offer before React loads, and registers the service worker. */}
+        <script dangerouslySetInnerHTML={{ __html: INSTALL_BOOT_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );

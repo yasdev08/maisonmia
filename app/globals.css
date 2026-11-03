@@ -62,8 +62,22 @@ body {
   animation: mm-sheen 1.6s ease-in-out 1.2s 2;
 }
 
+/* Install sheet & banner. */
+@keyframes mm-rise { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes mm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mm-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--mm-bronze) 45%, transparent); }
+  50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--mm-bronze) 0%, transparent); }
+}
+@keyframes mm-bob { 0%, 100% { transform: none; } 50% { transform: translateY(4px); } }
+.mm-rise { animation: mm-rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.mm-fade { animation: mm-fade 0.25s ease-out both; }
+.mm-pulse { animation: mm-pulse 1.6s ease-in-out infinite; }
+.mm-bob { animation: mm-bob 1.2s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .mm-sheen::after { animation: none; display: none; }
+  .mm-rise, .mm-fade, .mm-pulse, .mm-bob { animation: none; }
   html { scroll-behavior: auto; }
   .mm-settle { animation: none; }
   * { transition-duration: 0.01ms !important; }

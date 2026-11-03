@@ -8,7 +8,9 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { LocationCard } from "@/components/LocationCard";
 import { BookingSection } from "@/components/BookingSection";
 import { Footer } from "@/components/Footer";
-import { InstallAppButton } from "@/components/InstallAppButton";
+import { InstallTile } from "@/components/install/InstallTile";
+import { InstallSheet } from "@/components/install/InstallSheet";
+import { InstallBanner } from "@/components/install/InstallBanner";
 
 export default function Home() {
   const { contact, location } = siteConfig;
@@ -53,7 +55,7 @@ export default function Home() {
             hint="Ajouter au téléphone"
             icon={<UserPlus aria-hidden="true" />}
           />
-          <InstallAppButton />
+          <InstallTile />
           {socials.map((s) => (
             <LinkButton
               key={s.id}
@@ -72,6 +74,8 @@ export default function Home() {
         <BookingSection whatsappHref={whatsappHref} />
         <Footer socials={socials} />
       </div>
+      <InstallBanner />
+      <InstallSheet />
     </main>
   );
 }
