@@ -56,6 +56,17 @@ export const siteConfig = {
     items: [] as { name: string; description?: string; startingPrice?: string }[],
   },
 
+  /**
+   * Photo gallery. Put photos in /public/images/gallery/ then list them here, e.g.
+   * { src: "/images/gallery/balayage.jpg", alt: "Balayage blond miel sur cheveux longs" }
+   * With no photos, the section shows empty frames and a link to Instagram.
+   */
+  gallery: {
+    enabled: true,
+    title: "Nos réalisations",
+    items: [] as { src: string; alt: string; caption?: string }[],
+  },
+
   sections: {
     location: true,
     booking: true,

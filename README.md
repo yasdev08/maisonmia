@@ -19,6 +19,14 @@ Favicon : remplacez `app/icon.tsx` par un `app/icon.png` tiré du logo.
 `lib/site-config.ts` : textes, numéros, Maps, réseaux, horaires, prestations, couleurs.
 Une valeur vide masque automatiquement le bouton ou la section.
 
+## Galerie photos
+1. Copiez les photos dans `public/images/gallery/` (JPG ou WebP, ~1600 px de large suffit).
+2. Ajoutez-les dans `lib/site-config.ts` > `gallery.items` :
+   `{ src: "/images/gallery/balayage.jpg", alt: "Balayage blond miel sur cheveux longs" }`
+   (`alt` décrit la photo pour l'accessibilité ; `caption` est facultatif).
+Sans photo, la section affiche des cadres vides et un lien vers Instagram.
+`gallery.enabled: false` masque complètement la section.
+
 ## Déployer sur Vercel
 1. Poussez le dossier sur GitHub.
 2. vercel.com > Add New > Project : importez le dépôt (Next.js détecté).
@@ -30,4 +38,4 @@ Une valeur vide masque automatiquement le bouton ou la section.
 - Horaires d'ouverture, adresse postale (rue), prestations et prix si affichés
 - Logo original haute résolution (fond transparent)
 - Confirmation des comptes Instagram / Facebook / TikTok
-- Nom de domaine souhaité, photos réelles pour une future galerie
+- Nom de domaine souhaité, photos réelles pour la galerie

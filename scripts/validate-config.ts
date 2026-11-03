@@ -34,6 +34,7 @@ eq("coords match maps url", location.mapsUrl.includes(`!3d${location.latitude}!4
 eq("embed url", buildMapsEmbedUrl(location.latitude, location.longitude), "https://www.google.com/maps?q=35.6746074,-0.6478291&z=17&hl=fr&output=embed");
 eq("opening hours not invented", siteConfig.openingHours.length, 0);
 eq("services not invented", siteConfig.services.items.length, 0);
+eq("gallery not invented", siteConfig.gallery.items.length, 0);
 
 const vc = buildVCard(siteConfig).replace(/\r\n /g, "");
 eq("vcard wrapper", vc.startsWith("BEGIN:VCARD\r\nVERSION:3.0") && vc.trimEnd().endsWith("END:VCARD"), true);

@@ -5,6 +5,7 @@ import { BrandHeader } from "@/components/BrandHeader";
 import { LinkButton } from "@/components/LinkButton";
 import { socialIcon } from "@/components/SocialLinks";
 import { ServicesSection } from "@/components/ServicesSection";
+import { GallerySection } from "@/components/gallery/GallerySection";
 import { LocationCard } from "@/components/LocationCard";
 import { BookingSection } from "@/components/BookingSection";
 import { Footer } from "@/components/Footer";
@@ -70,6 +71,7 @@ export default function Home() {
         </nav>
 
         <ServicesSection />
+        <GallerySection instagram={socials.find((x) => x.id === "instagram") ?? null} />
         <LocationCard />
         <BookingSection whatsappHref={whatsappHref} />
         <Footer socials={socials} />
